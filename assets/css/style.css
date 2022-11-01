@@ -1,0 +1,13 @@
+#jumbotron {
+    margin-top: 10%;
+    padding: 31px;
+    background-color:#e0dddd;
+    padding:50px;
+}
+.add_emp_form{
+    margin:5%;
+    padding:10px;
+}
+.add_emp_form label{
+    padding:10px;
+}
