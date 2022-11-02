@@ -1,46 +1,39 @@
-<form >
+<form id="addempform" action="/employee/addEmp" method="POST">
     <fieldset>
         <legend>Employee Details</legend>
         <div class="form-group row">
             <label for="inputName" class="col-sm-2 col-form-label">Employee Name: </label>
-            <div class="col-lg-10">
-                <input type="text" class="form-control" id="inputName" required>
-            </div>
+            <input type="text" class="form-control" id="inputName" name="name" required>
         </div>
         <div class="form-group row">
             <label for="inputPassword3" class="col-lg-2 col-form-label">Employee Email: </label>
-            <div class="col-lg-10">
-                <input type="email" class="form-control" id="inputPassword3" required>
-            </div>
+
+            <input type="email" class="form-control" id="inputPassword3" required name="empmail">
+
         </div>
         <div class="form-group row">
             <label for="inputId" class="col-sm-2 col-form-label">Employee ID: </label>
-            <div class="col-lg-10">
-                <input type="number" class="form-control" id="inputId" required>
-            </div>
+            <input type="number" class="form-control" id="inputId" required name="empid">
+
         </div>
         <div class="form-group row">
             <label for="jobTitle" class="col-sm-2 col-form-label">Job Title: </label>
-            <div class="col-lg-10">
-                <input type="text" class="form-control" id="jobTitle" required>
-            </div>
+            <input type="text" class="form-control" id="jobTitle" required name="jobtitle">
+
         </div>
         <div class="form-group row">
             <label for="department" class="col-sm-2 col-form-label">Department: </label>
-            <div class="col-lg-10">
-                <input type="text" class="form-control" id="department" required>
-            </div>
+            <input type="text" class="form-control" id="department" required name="department">
+
         </div>
         <div class="form-group row">
             <label for="department" class="col-sm-2 col-form-label">Manager's email : </label>
-            <div class="col-lg-10">
-                <input type="email" class="form-control" id="department" required>
-            </div>
+            <input type="email" class="form-control" id="department" required name="manager_mail">
+
         </div>
         <div class="form-group row">
-            <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+
         </div>
     </fieldset>
 </form>

@@ -1,17 +1,19 @@
-<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="pills-add-tab" data-bs-toggle="pill" data-bs-target="#pills-add"
-            type="button" role="tab" aria-controls="pills-add" aria-selected="true">Add Employee</button>
+        <button class="nav-link active" id="addEmp-tab" data-bs-toggle="tab" data-bs-target="#addEmp" type="button"
+            role="tab" aria-controls="addEmp" aria-selected="false">Add New Employee</button>
     </li>
     <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-view-tab" data-bs-toggle="pill" data-bs-target="#pills-view" type="button"
-            role="tab" aria-controls="pills-view" aria-selected="false">View Employee</button>
+        <button class="nav-link" id="viewEmp-tab" data-bs-toggle="tab" data-bs-target="#viewEmp" type="button"
+            role="tab" aria-controls="viewEmp" aria-selected="true">View Employees</button>
     </li>
-    <div class="tab-content add_emp_form" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-add" role="tabpanel" aria-labelledby="pills-add-tab">
-            <!-- form to add employees -->
-            <%- include('addEmp') %>
-        </div>
-        <div class="tab-pane fade" id="pills-view" role="tabpanel" aria-labelledby="pills-view-tab"></div>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="addEmp" role="tabpanel" aria-labelledby="addEmp-tab">
+        <%- include('addEmp') %>
     </div>
+    <div class="tab-pane fade " id="viewEmp" role="tabpanel" aria-labelledby="viewEmp-tab"> 
+        <%- include('viewEmp') %>
+    </div>
+</div>
 </ul>

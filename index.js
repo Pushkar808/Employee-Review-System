@@ -3,13 +3,17 @@ const path = require('path');
 const ejs = require('ejs')
 const expressLayouts = require('express-ejs-layouts');//express ejs layouts
 const cookieParser = require('cookie-parser');
-
+const bodyParser = require("body-parser")
+const Dbconfig=require('./config/dbconfig')
 
 const port=process.env.PORT || 8000;//port for server
 const app = express();
 
+
 app.use(cookieParser())
 app.use(express.urlencoded())
+// app.use(bodyParser.urlencoded({ extended: true }))
+
 //setting template engine
 app.set('view engine', 'ejs');
 //setting where to find views for ejs

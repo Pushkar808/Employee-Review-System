@@ -4,10 +4,9 @@
     background-color:#e0dddd;
     padding:50px;
 }
-.add_emp_form{
-    margin:5%;
-    padding:10px;
+#addempform{
+    padding:10px 20px;
 }
-.add_emp_form label{
-    padding:10px;
+#addempform .form-group{
+    padding:5px;
 }
