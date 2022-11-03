@@ -1,6 +1,6 @@
 const employeeSchema = require('../models/employeeSchema');
 
-
+//module to view employee
 module.exports.employee = (req, res) => {
     employeeSchema.find({}, (err, Empdata) => {
         if (err) { console.log("ERROR in View of Emp" + err); return; }
@@ -10,6 +10,7 @@ module.exports.employee = (req, res) => {
     })
 
 }
+//module to add employee
 
 module.exports.add_employee = (req, res) => {
     employeeSchema.create({
@@ -22,9 +23,23 @@ module.exports.add_employee = (req, res) => {
     })
     res.redirect('back')
 }
+//module to delete employee
 
 module.exports.delete = (req, res) => {
-    console.log("OK")
-    employeeSchema.deleteOne({ id: req.query.id },(err,data)=>{if(err)console.log(err)});
+    employeeSchema.deleteOne({ id: req.query.id }, (err, data) => { if (err) console.log(err) });
     res.redirect('back')
+}
+
+//module to add performance for employee
+module.exports.addPerformance = (req, res) => {
+    employeeSchema.find({}, (err, Empdata) => {
+        if (err) { console.log("ERROR in View of Emp" + err); return; }
+        res.render('addPerformance', {
+            Empdata: Empdata
+        })
+    })
+}
+//module to add performance for employee
+module.exports.addReviewForm = (req, res) => {
+    res.render('addReviewForm');
 }
