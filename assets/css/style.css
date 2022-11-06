@@ -10,3 +10,9 @@
 #addempform .form-group{
     padding:5px;
 }
+#rating-form{
+    padding: 15px 46px;
+}   
+#rating-range span{
+    padding:0px 15px;
+}

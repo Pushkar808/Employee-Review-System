@@ -41,5 +41,11 @@ module.exports.addPerformance = (req, res) => {
 }
 //module to add performance for employee
 module.exports.addReviewForm = (req, res) => {
-    res.render('addReviewForm');
+    // console.log(req.query);
+    employeeSchema.findById(req.query.id, (err, data) => {
+        if (err) { console.log("ERROR in View of Emp" + err); return; }
+        res.render('addReviewForm',{
+            empData:data
+       });
+    })
 }

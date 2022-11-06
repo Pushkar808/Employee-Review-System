@@ -4,27 +4,67 @@
         <tbody>
             <tr>
                 <th scope="row">Employee Name: </th>
-                <td>Mark</td>
+                <td>
+                    <%= empData.name %>
+                </td>
             </tr>
             <tr>
                 <th scope="row">Job Title:</th>
-                <td>Jacob</td>
+                <td>
+                    <%= empData.jobtitle %>
+                </td>
 
             </tr>
             <tr>
                 <th scope="row">Department</th>
-                <td colspan="2">Larry the Bird</td>
+                <td colspan="2">
+                    <%= empData.department %>
+                </td>
             </tr>
             <tr>
                 <th scope="row">Employee ID</th>
-                <td colspan="2">Larry the Bird</td>
+                <td colspan="2">
+                    <%= empData.empid %>
+                </td>
             </tr>
         </tbody>
     </table>
 </div>
 
-
 <!-- employee rating form -->
+<h1>Ratings</h1>
 <div class="container-fluid">
-    <!-- to be added -->
+    <form action="#" method="POST" id="rating-form">
+        <table  class="table table-striped">
+            <tbody id="rating-range">
+                <tr>
+                    <th scope="row">Job Knowledge</th>
+                    <td><input type="range" max="5" min="0"><span data-toggle="tooltip" title="1" id="rating-value"></span></td>
+                </tr>
+                <tr>
+                    <th scope="row">Work Quality</th>
+                    <td><input type="range" max="5" min="0"><span data-toggle="tooltip" title="1" id="rating-value"></span></td>
+                    
+                </tr>
+                <tr>
+                    <th scope="row">Attendance/Puntuality</th>
+                    <td><input type="range" max="5" min="0"><span data-toggle="tooltip" title="1" id="rating-value"></span></td>
+                </tr>
+                <tr>
+                    <th scope="row">Productivity</th>
+                    <td><input type="range" max="5" min="0"><span data-toggle="tooltip" title="1" id="rating-value"></span></td>
+                </tr>
+                <tr>
+                    <th scope="row">Communication/Listining Skills</th>
+                    <td><input type="range" max="5" min="0"><span data-toggle="tooltip" title="1" id="rating-value"></span></td>
+                </tr>
+                <tr>
+                    <th scope="row">Dependability</th>
+                    <td><input type="range" max="5" min="0"><span data-toggle="tooltip" title="1" id="rating-value"></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-secondary">Submit Review</button>
+
+    </form>
 </div>

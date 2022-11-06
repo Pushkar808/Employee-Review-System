@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <% for(let i=0;i<Empdata.length;i++) { %>
-        <tr onclick="location.href='/employee/addReviewForm/<%= Empdata[i].id%>'">
+        <tr onclick="location.href='/employee/addReviewForm/?id=<%= Empdata[i].id%>'">
             <td data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
                 <%= Empdata[i].name %>
             </td>
