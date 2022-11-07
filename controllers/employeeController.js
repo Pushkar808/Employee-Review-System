@@ -1,5 +1,6 @@
 const employeeSchema = require('../models/employeeSchema');
-
+const ratingSchema=require('../models/ratingScheama');
+const ratingMapSchema=require('../models/ratingEmployeeSchema')
 //module to view employee
 module.exports.employee = (req, res) => {
     employeeSchema.find({}, (err, Empdata) => {
@@ -48,4 +49,18 @@ module.exports.addReviewForm = (req, res) => {
             empData:data
        });
     })
+}
+
+//form to submit rating 
+module.exports.rating = (req, res) => {
+    // ratingMapSchema.find({})
+    ratingSchema.create({
+        empid:req.query.id,
+        knowledge:req.body.range[0],
+        work_quality:req.body.range[1],
+        attendance:req.body.range[2],
+        productivity:req.body.range[3],
+        listening_skills:req.body.range[4],
+    });
+    res.redirect('back');
 }

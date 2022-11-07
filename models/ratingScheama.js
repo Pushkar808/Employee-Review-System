@@ -1,8 +1,7 @@
 const mongoose=require('mongoose');
 const PerformanceSchema=mongoose.Schema({
     empid:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'employeeSchema',
+        type:Number,
         required:true
     },
     knowledge:{
@@ -26,5 +25,6 @@ const PerformanceSchema=mongoose.Schema({
         required:true
     }
 },{timestamps:true});
+
 const Performance=mongoose.model('performance',PerformanceSchema);
 module.exports=Performance

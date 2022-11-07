@@ -7,6 +7,9 @@ router.use('/addEmp',employeeController.add_employee);
 router.use('/delete',employeeController.delete);
 router.use('/addPerformance',employeeController.addPerformance);
 router.use('/addReviewForm',employeeController.addReviewForm);
+router.use('/rating',employeeController.rating);
+
+
 
 router.use('/',employeeController.employee);
 
