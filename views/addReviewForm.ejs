@@ -34,37 +34,74 @@
 <!-- employee rating form -->
 <h1>Ratings</h1>
 <div class="container-fluid">
-    <form action="/employee/rating/?id=<%= empData.empid %>" method="POST" id="rating-form">
-        <table  class="table table-striped">
-            <tbody id="rating-range">
-                <tr>
-                    <th scope="row">Job Knowledge</th>
-                    <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1" id="rating-value">0</span></td>
-                </tr>
-                <tr>
-                    <th scope="row">Work Quality</th>
-                    <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1" id="rating-value">0</span></td>
-                    
-                </tr>
-                <tr>
-                    <th scope="row">Attendance/Puntuality</th>
-                    <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1" id="rating-value">0</span></td>
-                </tr>
-                <tr>
-                    <th scope="row">Productivity</th>
-                    <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1" id="rating-value">0</span></td>
-                </tr>
-                <tr>
-                    <th scope="row">Communication/Listining Skills</th>
-                    <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1" id="rating-value">0</span></td>
-                </tr>
-                <tr>
-                    <th scope="row">Dependability</th>
-                    <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1" id="rating-value">0</span></td>
-                </tr>
-            </tbody>
-        </table>
-        <button type="submit" class="btn btn-secondary">Submit Review</button>
+    <form action="/employee/rating/?id=<%= empData.id %>" method="POST" id="rating-form">
+        <table  class="table table-bordered" >
+            <!-- if user has already given then show this -->
+            <% if(ratingDone){ %>
+                <tbody id="rating-range">
+                    <tr class="table-active">
+                        <th scope="row">Job Knowledge: </th>
+                        <td><span data-toggle="tooltip" title="1" id="rating-value"><%= ratingDetails[0].rating_id.knowledge %></span></td>
+                    </tr>
+                    <tr class="table-active">
+                        <th scope="row">Work Quality: </th>
+                        <td><span data-toggle="tooltip" title="1" id="rating-value"><%= ratingDetails[0].rating_id.work_quality %></span></td>
+                    </tr>
+                    <tr class="table-active">
+                        <th scope="row">Attendance/Puntuality: </th>
+                        <td><span data-toggle="tooltip" title="1" id="rating-value"><%= ratingDetails[0].rating_id.attendance %></span></td>
+
+                    </tr>
+                    <tr class="table-active">
+                        <th scope="row">Productivity: </th>
+                        <td><span data-toggle="tooltip" title="1" id="rating-value"><%= ratingDetails[0].rating_id.productivity %></span></td>
+
+                    </tr>
+                    <tr class="table-active">
+                        <th scope="row">Communication/Listining Skills: </th>
+                        <td><span data-toggle="tooltip" title="1" id="rating-value"><%= ratingDetails[0].rating_id.listening_skills %></span></td>
+
+                    </tr>
+                    <tr class="table-active">
+                        <th scope="row">Dependability: </th>
+                        <td><span data-toggle="tooltip" title="1" id="rating-value"><%= ratingDetails[0].rating_id.knowledge %></span></td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <% }else{ %>
+                <!-- table row if its first time for user to add review -->
+                <tbody id="rating-range">
+                    <tr>
+                        <th scope="row">Job Knowledge</th>
+                        <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1" id="rating-value">0</span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Work Quality</th>
+                        <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1" id="rating-value">0</span></td>
+                        
+                    </tr>
+                    <tr>
+                        <th scope="row">Attendance/Puntuality</th>
+                        <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1" id="rating-value">0</span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Productivity</th>
+                        <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1" id="rating-value">0</span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Communication/Listining Skills</th>
+                        <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1" id="rating-value">0</span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Dependability</th>
+                        <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1" id="rating-value">0</span></td>
+                    </tr>
+                </tbody>
+                </table>
+                <button type="submit" class="btn btn-secondary">Submit Review</button>
+            <% } %>
+       
 
     </form>
 </div>

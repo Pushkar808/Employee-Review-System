@@ -1,7 +1,8 @@
 const mongoose=require('mongoose');
 const PerformanceSchema=mongoose.Schema({
     empid:{
-        type:Number,
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Employee',
         required:true
     },
     knowledge:{
