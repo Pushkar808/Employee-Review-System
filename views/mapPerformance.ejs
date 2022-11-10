@@ -1,0 +1,60 @@
+<h1>Employee Feedback form</h1>
+<div class="container-fluid">
+    
+    <table class="table table-striped">
+        
+        <tbody>
+            <tr>
+                <th scope="row">Employee Name: </th>
+                <td>
+                    <%= empData.name %>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Job Title:</th>
+                <td>
+                    <%= empData.jobtitle %>
+                </td>
+
+            </tr>
+            <tr>
+                <th scope="row">Department</th>
+                <td colspan="2">
+                    <%= empData.department %>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Employee ID</th>
+                <td colspan="2">
+                    <%= empData.empid %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h1>Map Feedback</h1>
+<div class="container-fluid">
+    <table class="table table-striped">
+        <thead>
+            <th scope="row">Employee Name: </th>
+            <th scope="row">Map Employees for this feedback</th>
+        </thead>
+        <form action="/employee/admin/mapEmp/?id=<%= empData.id%>'">
+        <% for(data in allEmp){ %>
+            <tbody>
+                <tr>
+                    <td>
+                        <%= allEmp[data].name %>
+                        <%= allEmp[data].id %>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="mappedId" value="<%= allEmp[data].id %>"> Map for Feedback
+                    </td>
+                </tr>
+            </tbody>
+        <% } %>
+        <input type="submit" value="submit">
+    </form>
+    </table>
+
+</div>

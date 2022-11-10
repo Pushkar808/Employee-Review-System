@@ -86,3 +86,15 @@ module.exports.rating =async (req, res) => {
 
     res.redirect('back');
 }
+
+//to view the rating mapped by admin to the employee
+module.exports.viewRating=(req,res)=>{
+    // if (!req.isAuthenticated()) {//if user is already signed in the don't show login form
+    //     res.redirect('/')
+    // }
+    console.log(req.user.rating_mapped)
+    res.render('viewPerformance',{
+        rating_mapped:req.user.rating_mapped
+    })
+    
+}

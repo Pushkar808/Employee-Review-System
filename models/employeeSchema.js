@@ -30,7 +30,11 @@ const EmpSchema=mongoose.Schema({//Db structure
     },    
     is_admin:{
         type:Boolean
-    }
+    },
+    rating_mapped:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Employee'
+    }]
 })
 const Employee=mongoose.model('Employee',EmpSchema);
 module.exports=Employee

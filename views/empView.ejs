@@ -1,0 +1,39 @@
+<table class="table table-striped table-hover" >
+    <thead>
+        <tr>
+            <th scope="col">Employee Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Department</th>
+            <th scope="col">jobtitle</th>
+            <th scope="col">Manager's Email</th>
+        </tr>
+    </thead>
+    <% for(let i=0;i<Empdata.length;i++) { %>
+        <tr onclick="location.href='/employee/admin/map/?id=<%= Empdata[i].id%>&'">
+            <td data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+                <%= Empdata[i].name %>
+            </td>
+            
+            <td>
+                <%= Empdata[i].email %>
+            </td>
+            <td>
+                <%= Empdata[i].empid %>
+            </td>
+            <td>
+                <%= Empdata[i].department %>
+            </td>
+            <td>
+                <%= Empdata[i].jobtitle %>
+            </td>
+            <td>
+                <%= Empdata[i].manager_email %> 
+            </td>
+            <td>
+                <span class="badge bg-secondary">New</span>
+            </td>
+        </tr>
+
+        <% } %>
+</table>
