@@ -32,24 +32,41 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="/employee">Employees</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Performance Review
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/employee/addPerformance">Add Performance Review</a></li>
-                            <li><a class="dropdown-item" href="#">View Performance</a></li>
-                            <li><a class="dropdown-item" href="#">Edit Performance</a></li>
-                            <li><a class="dropdown-item" href="#">Map Performance</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Login/SignUp</a>
-                    </li>
+                   
+                        <% if(login){ %>
+                            <!-- as we have set locals inside passport so its available only if user if logged in  -->
+                            <!-- if user is admin then only he/she can have these options -->
+                            <% if(is_admin){ %>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Performance Review
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="/employee/addPerformance">Add Performance Review</a></li>
+                                        <li><a class="dropdown-item" href="#">View Performance</a></li>
+                                        <li><a class="dropdown-item" href="#">Edit Performance</a></li>
+                                        <li><a class="dropdown-item" href="#">Map Performance</a></li>
+                                    </ul>
+                                </li>
+                            <% }else{ %>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/employee">Give Feedback</a>
+                                </li>            
+                            <% } %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">Logout</a>
+                            </li>
+                        <% }else{ %>
+                            <li class="nav-item">
+                            <a class="nav-link" href="/login">Login/SignUp</a>
+                            </li>
+                        <% } %>
+                    
                 </ul>
             </div>
         </div>

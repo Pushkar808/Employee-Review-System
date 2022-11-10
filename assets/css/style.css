@@ -16,3 +16,7 @@
 #rating-range span{
     padding:0px 15px;
 }
+#signup-form{
+    padding:20px;
+    display:none;
+}

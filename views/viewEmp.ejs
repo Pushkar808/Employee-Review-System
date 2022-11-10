@@ -7,9 +7,9 @@
             <th scope="col">Department</th>
             <th scope="col">jobtitle</th>
             <th scope="col">Manager's Email</th>
+            <th scope="col">Make Admin</th>
             <th scope="col">Edit</th>
             <th scope="col">Remove</th>
-
           </tr>
     </thead>
     <% for(let i=0;i<Empdata.length;i++) { %>
@@ -20,6 +20,12 @@
             <td> <%= Empdata[i].department %></td>
             <td><%= Empdata[i].jobtitle %></td>
             <td><%= Empdata[i].manager_email %></td>
+            <% if(!Empdata[i].is_admin){ %>
+            <td><button class="btn btn-primary">Make Admin</button ></td>
+            <% }else{ %>
+            <td><button class="btn btn-danger">Remove Admin</button ></td>
+
+            <% } %>
             <td><a id="removeEmp" href="#">Edit</a></td>
             <td><a id="removeEmp" href="/employee/delete/?id=<%= Empdata[i].id %>">Remove</a></td>
         </tr>

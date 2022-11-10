@@ -24,9 +24,13 @@ const EmpSchema=mongoose.Schema({//Db structure
         type:String,
         required:true
     },
-    // is_admin:{
-    //     type:Boolean
-    // }
+    password:{
+        type:String,
+        required:true
+    },    
+    is_admin:{
+        type:Boolean
+    }
 })
 const Employee=mongoose.model('Employee',EmpSchema);
 module.exports=Employee

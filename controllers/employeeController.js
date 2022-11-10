@@ -13,7 +13,6 @@ module.exports.employee = (req, res) => {
 
 }
 //module to add employee
-
 module.exports.add_employee = (req, res) => {
     employeeSchema.create({
         name: req.body.name,
@@ -21,7 +20,9 @@ module.exports.add_employee = (req, res) => {
         empid: req.body.empid,
         department: req.body.jobtitle,
         jobtitle: req.body.department,
-        manager_email: req.body.manager_mail
+        password:req.body.password,
+        manager_email: req.body.manager_mail,
+        is_admin:false//initially employee is not admin
     })
     res.redirect('back')
 }
