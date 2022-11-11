@@ -1,13 +1,13 @@
 const Employee=require('../models/employeeSchema')
 module.exports.home=(req,res)=>{
     if (!req.isAuthenticated()) {//if user is already signed in the don't show login form
-        res.redirect('/login')
+        return res.redirect('/login')
     }
     res.render('index')
 }
 module.exports.login=(req,res)=>{
     if (req.isAuthenticated()) {//if user is already signed in the don't show login form
-        res.redirect('/')
+        return res.redirect('/')
     }
     res.render('login')
 }

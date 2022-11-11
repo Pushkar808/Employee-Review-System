@@ -1,4 +1,4 @@
-<h1>Employee Feedback form</h1>
+<h1>About <%= empData.name %></h1>
 <div class="container-fluid">
     
     <table class="table table-striped">
@@ -39,22 +39,28 @@
             <th scope="row">Employee Name: </th>
             <th scope="row">Map Employees for this feedback</th>
         </thead>
-        <form action="/employee/admin/mapEmp/?id=<%= empData.id%>'">
-        <% for(data in allEmp){ %>
+        <form action="/employee/admin/mapEmp" method="GET">
             <tbody>
-                <tr>
-                    <td>
-                        <%= allEmp[data].name %>
-                        <%= allEmp[data].id %>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="mappedId" value="<%= allEmp[data].id %>"> Map for Feedback
-                    </td>
-                </tr>
+                <% for(data in allEmp){ %>
+                        <tr>
+                            <td>
+                                <%= allEmp[data].name %>
+                                <%= allEmp[data].id %>
+                            </td>
+                            <td>
+                                <% if(allEmp[data].rating_mapped.includes(empData.id)){ %>
+                                    <input type="checkbox" name="mappedId" value="<%= allEmp[data].id %>" disabled> Map for Feedback
+                                    <%}else{ %>
+                                <input type="checkbox" name="mappedId" value="<%= allEmp[data].id %>"> Map for Feedback
+                                    <% } %><br>
+                            </td>
+                        </tr>
+                        
+                <% } %>
+                <input type="hidden" value="<%= empData.id %>" name="id">
             </tbody>
-        <% } %>
-        <input type="submit" value="submit">
-    </form>
+            <input type="submit" class="btn btn-primary" value="Map To Employees" >
+        </form>
     </table>
 
 </div>

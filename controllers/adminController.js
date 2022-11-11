@@ -8,28 +8,37 @@ module.exports.admin = (req, res) => {
     })
 }
 module.exports.map = async (req, res) => {
+    if(!req.isAuthenticated() || !req.user.is_admin ){//if user if not admin or not signed in then unable to show this page
+        return res.redirect('/');
+    }
     const allEmp = await empSchema.find({ _id: { $ne: req.query.id } })//so that current user i.e user whose rating we are mapping to other will not be viisble
-    empSchema.findById(req.query.id, (err, data) => {
+    res.locals.mappedId=req.query.id;
+     empSchema.findById(req.query.id, async (err, data) => {
         if (err) console.log("errorin render Mapp"+err)
-        res.render('mapPerformance', {
+        await res.render('mapPerformance', {
             empData: data,
             allEmp: allEmp
         })
-    })
+    }).clone()
+    
 }
 //module to update the mapped 
-module.exports.mapEmp = async (req, res) => {
+module.exports.mapEmp = (req, res) => {
+    
     let ids = {}
+
+    console.log(req.query.id)
     if (typeof (req.query.mappedId) == "string")//as checkbox send it as object with one data not inside array
         ids = [req.query.mappedId];
     else
         ids = req.query.mappedId
     for(let i=0;i<ids.length;i++){
-        empSchema.findByIdAndUpdate(req.query.mappedId,{rating_mapped:req.query.id},(err,data)=>{
+        // console.log(ids[i])
+        // $addToSet is so that it contain only unique mappedId not repeated
+        empSchema.findByIdAndUpdate(ids[i],{ $addToSet: { rating_mapped: req.query.id }},(err,data)=>{
             if(err)console.log(err)
         })
     }
-    console.log(req.query)
 res.redirect('back')
 
 }

@@ -26,7 +26,7 @@
             <td><button class="btn btn-danger">Remove Admin</button ></td>
 
             <% } %>
-            <td><a id="removeEmp" href="#">Edit</a></td>
+            <td><a id="removeEmp" href="/employee/admin/map/?id=<%= Empdata[i].id %>">Edit</a></td>
             <td><a id="removeEmp" href="/employee/delete/?id=<%= Empdata[i].id %>">Remove</a></td>
         </tr>
     <% } %>
