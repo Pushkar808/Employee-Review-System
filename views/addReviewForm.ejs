@@ -1,107 +1,163 @@
 <h1>Employee Feedback form</h1>
-<div class="container-fluid">
-    <table class="table table-striped">
-        <tbody>
-            <tr>
-                <th scope="row">Employee Name: </th>
-                <td>
-                    <%= empData.name %>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">Job Title:</th>
-                <td>
-                    <%= empData.jobtitle %>
-                </td>
 
-            </tr>
-            <tr>
-                <th scope="row">Department</th>
-                <td colspan="2">
-                    <%= empData.department %>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">Employee ID</th>
-                <td colspan="2">
-                    <%= empData.empid %>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container-fluid">
+    <a href="#" id="editButton"><i class="fa-solid fa-pen-to-square"></i></a>
+    <!--Emp info edit form -->
+    <form id="empForm" action="/employee/admin/editEmp" method="POST">
+        <table class="table table-striped">
+            <tbody>
+                <input type="hidden" name="id" value="<%= empData.id %>">
+                <tr>
+                    <th scope="row">Employee Name: </th>
+                    <td>
+                        <input type='text' value="<%= empData.name %>" name="name"> 
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Job Title:</th>
+                    <td>
+                        <input type='text' value="<%= empData.jobtitle %>" name="jobtitle" required>
+                    </td>
+
+                </tr>
+                <tr>
+                    <th scope="row">Department</th>
+                    <td colspan="2">
+                        <input type='text' value="<%= empData.department %>" required name="department">
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Employee ID</th>
+                    <td colspan="2">
+                        <input type='number' value="<%= empData.empid %>" required name="empid">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" class="btn btn-secondary" value="Edit">
+    </form>
+    <div id="empTable">
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th scope="row">Employee Name: </th>
+                    <td>
+                        <%= empData.name %>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Job Title:</th>
+                    <td>
+                        <%= empData.jobtitle %>
+                    </td>
+
+                </tr>
+                <tr>
+                    <th scope="row">Department</th>
+                    <td colspan="2">
+                        <%= empData.department %>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Employee ID</th>
+                    <td colspan="2">
+                        <%= empData.empid %>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <!-- employee rating form -->
 <h1>Ratings</h1>
 <div class="container-fluid">
     <form action="/employee/rating/?id=<%= empData.id %>" method="POST" id="rating-form">
-        <table  class="table table-bordered" >
+        <table class="table table-bordered">
             <!-- if user has already given then show this -->
             <% if(ratingDone){ %>
                 <tbody id="rating-range">
                     <tr class="table-active">
                         <th scope="row">Job Knowledge: </th>
-                        <td><span data-toggle="tooltip" title="1" id="rating-value"><%= ratingDetails[0].rating_id.knowledge %></span></td>
+                        <td><span data-toggle="tooltip" title="1" id="rating-value">
+                                <%= ratingDetails[0].rating_id.knowledge %>
+                            </span></td>
                     </tr>
                     <tr class="table-active">
                         <th scope="row">Work Quality: </th>
-                        <td><span data-toggle="tooltip" title="1" id="rating-value"><%= ratingDetails[0].rating_id.work_quality %></span></td>
+                        <td><span data-toggle="tooltip" title="1" id="rating-value">
+                                <%= ratingDetails[0].rating_id.work_quality %>
+                            </span></td>
                     </tr>
                     <tr class="table-active">
                         <th scope="row">Attendance/Puntuality: </th>
-                        <td><span data-toggle="tooltip" title="1" id="rating-value"><%= ratingDetails[0].rating_id.attendance %></span></td>
+                        <td><span data-toggle="tooltip" title="1" id="rating-value">
+                                <%= ratingDetails[0].rating_id.attendance %>
+                            </span></td>
 
                     </tr>
                     <tr class="table-active">
                         <th scope="row">Productivity: </th>
-                        <td><span data-toggle="tooltip" title="1" id="rating-value"><%= ratingDetails[0].rating_id.productivity %></span></td>
+                        <td><span data-toggle="tooltip" title="1" id="rating-value">
+                                <%= ratingDetails[0].rating_id.productivity %>
+                            </span></td>
 
                     </tr>
                     <tr class="table-active">
                         <th scope="row">Communication/Listining Skills: </th>
-                        <td><span data-toggle="tooltip" title="1" id="rating-value"><%= ratingDetails[0].rating_id.listening_skills %></span></td>
+                        <td><span data-toggle="tooltip" title="1" id="rating-value">
+                                <%= ratingDetails[0].rating_id.listening_skills %>
+                            </span></td>
 
                     </tr>
                     <tr class="table-active">
                         <th scope="row">Dependability: </th>
-                        <td><span data-toggle="tooltip" title="1" id="rating-value"><%= ratingDetails[0].rating_id.knowledge %></span></td>
+                        <td><span data-toggle="tooltip" title="1" id="rating-value">
+                                <%= ratingDetails[0].rating_id.knowledge %>
+                            </span></td>
 
                     </tr>
                 </tbody>
+        </table>
+        <% }else{ %>
+            <!-- table row if its first time for user to add review -->
+            <tbody id="rating-range">
+                <tr>
+                    <th scope="row">Job Knowledge</th>
+                    <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1"
+                            id="rating-value">0</span></td>
+                </tr>
+                <tr>
+                    <th scope="row">Work Quality</th>
+                    <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1"
+                            id="rating-value">0</span></td>
+
+                </tr>
+                <tr>
+                    <th scope="row">Attendance/Puntuality</th>
+                    <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1"
+                            id="rating-value">0</span></td>
+                </tr>
+                <tr>
+                    <th scope="row">Productivity</th>
+                    <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1"
+                            id="rating-value">0</span></td>
+                </tr>
+                <tr>
+                    <th scope="row">Communication/Listining Skills</th>
+                    <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1"
+                            id="rating-value">0</span></td>
+                </tr>
+                <tr>
+                    <th scope="row">Dependability</th>
+                    <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1"
+                            id="rating-value">0</span></td>
+                </tr>
+            </tbody>
             </table>
-            <% }else{ %>
-                <!-- table row if its first time for user to add review -->
-                <tbody id="rating-range">
-                    <tr>
-                        <th scope="row">Job Knowledge</th>
-                        <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1" id="rating-value">0</span></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Work Quality</th>
-                        <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1" id="rating-value">0</span></td>
-                        
-                    </tr>
-                    <tr>
-                        <th scope="row">Attendance/Puntuality</th>
-                        <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1" id="rating-value">0</span></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Productivity</th>
-                        <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1" id="rating-value">0</span></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Communication/Listining Skills</th>
-                        <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1" id="rating-value">0</span></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Dependability</th>
-                        <td><input type="range" max="5" min="0" name="range" value="0"><span data-toggle="tooltip" title="1" id="rating-value">0</span></td>
-                    </tr>
-                </tbody>
-                </table>
-                <button type="submit" class="btn btn-secondary">Submit Review</button>
+            <button type="submit" class="btn btn-secondary">Submit Review</button>
             <% } %>
-       
+
 
     </form>
 </div>

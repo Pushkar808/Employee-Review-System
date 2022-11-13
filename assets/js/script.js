@@ -4,15 +4,15 @@ const range_placeholder = document.querySelectorAll('#rating-value')
 for (let i = 0; i < range.length; i++) {
     range[i].addEventListener('change', () => {
         range_placeholder[i].innerHTML = range[i].value;
-        range_placeholder[i].className=i
+        range_placeholder[i].className = i
         //setting value for tooltip
 
-        
-        $('.'+i).attr('title',range[i].value);//initial title
-        $('.'+i).attr('data-bs-original-title',range[i].value);//after change titile
-        $('.'+i).tooltip('show');
-        setTimeout(function(){
-            $('.'+i).tooltip('hide')
+
+        $('.' + i).attr('title', range[i].value);//initial title
+        $('.' + i).attr('data-bs-original-title', range[i].value);//after change titile
+        $('.' + i).tooltip('show');
+        setTimeout(function () {
+            $('.' + i).tooltip('hide')
         }, 2000);
     })
 }
@@ -42,3 +42,11 @@ $('#login').click(() => {
             $('#login-form').css('display', 'none');
     });
 })
+
+
+//on click of edit button inside employee feedback form show the form and hide the table
+$('#editButton').click(() => {
+    $('#empForm').toggle('fast', () => {
+        $('#empTable').toggle();
+    })
+});

@@ -8,7 +8,7 @@
             <th scope="col">jobtitle</th>
             <th scope="col">Manager's Email</th>
             <th scope="col">Make Admin</th>
-            <th scope="col">Edit</th>
+            <th scope="col">Edit/Map</th>
             <th scope="col">Remove</th>
           </tr>
     </thead>
@@ -26,7 +26,7 @@
             <td><button class="btn btn-danger">Remove Admin</button ></td>
 
             <% } %>
-            <td><a id="removeEmp" href="/employee/admin/map/?id=<%= Empdata[i].id %>">Edit</a></td>
+            <td><a id="removeEmp" href="/employee/admin/map/?id=<%= Empdata[i].id %>">Edit/Map</a></td>
             <td><a id="removeEmp" href="/employee/delete/?id=<%= Empdata[i].id %>">Remove</a></td>
         </tr>
     <% } %>
