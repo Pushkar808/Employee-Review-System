@@ -44,7 +44,6 @@ module.exports.addPerformance = (req, res) => {
 }
 //module to add performance for employee
 module.exports.addReviewForm =async (req, res) => {
-    //NOTE:::::
     const rating_details=await ratingMapSchema.find({rated_emp:req.query.id,employee:req.user.id}).populate('rating_id')
     console.log(rating_details);
     const empData=await employeeSchema.findById(req.query.id)

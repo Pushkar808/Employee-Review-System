@@ -50,3 +50,7 @@ $('#editButton').click(() => {
         $('#empTable').toggle();
     })
 });
+
+$('.submitRating-edit').click((e)=>{
+    $('.editRatingform').toggle('fast')
+})

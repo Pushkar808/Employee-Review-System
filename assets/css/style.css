@@ -27,4 +27,11 @@
 }
 #empForm{
     display: none;
-} 
+}
+.ratingBadge{
+    cursor: pointer;
+}
+.editRatingform{
+    padding:20px;
+    display: none;
+}

@@ -1,5 +1,6 @@
 const empSchema = require('../models/employeeSchema')
-//
+const mappedSchema = require('../models/ratingEmployeeSchema')
+const performanceScema = require('../models/ratingScheama')
 module.exports.admin = (req, res) => {
     empSchema.find({}, (err, data) => {
         res.render('empView', {
@@ -51,11 +52,45 @@ module.exports.editEmp = (req, res) => {
         department: req.body.department,
         empid: req.body.empid
     }
-    empSchema.findByIdAndUpdate(req.body.id,update,(err,data)=>{
-        if(err){
-            console.log("Error in updating emp ref:adminControll.editEmp"+err);
+    empSchema.findByIdAndUpdate(req.body.id, update, (err, data) => {
+        if (err) {
+            console.log("Error in updating emp ref:adminControll.editEmp" + err);
             return;
         }
         return res.redirect('back')
     })
+}
+
+//module to check which employee has given the rating and what is the rating 
+module.exports.viewRating = (req, res) => {
+    if (!req.isAuthenticated() || !req.user.is_admin) {//if user if not admin or not signed in then unable to show this page
+        return res.redirect('/');
+    }
+    mappedSchema.find({})
+        .populate('employee')
+        .populate('rated_emp')
+        .populate('rating_id')
+        .exec((err, data) => {
+            if (err) {
+                console.log("Error in fetching mappedSchema ref:adminControll.viewRating" + err);
+                return;
+            }
+            // console.log(data)
+            res.render('viewRating', {
+                data: data
+            })
+        })
+}
+
+module.exports.editRating = (req, res) => {
+    // console.log(req.body);
+    //req.body is already in the correct format so we can directly pass it to update the data
+    performanceScema.findByIdAndUpdate(req.query.rid,req.body,(err, data) => {
+        if (err) {
+            console.log("Error in fetching emp ref:adminControll.editRatingform" + err);
+            return;
+        }
+        res.redirect('back')
+    });
+
 }
