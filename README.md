@@ -27,7 +27,7 @@ Has 1 login for admin and employee
   5. Run the website from localhost:8000.
 
 <b>
-Note: for practice below is the super admin account details:<br>
-  Username: admin@gg.cc<br>
-  Password: 1234
+Note: for practice below is the admin account details:<br>
+  Username: admin@2.gg<br>
+  Password: 123456
 </b>
