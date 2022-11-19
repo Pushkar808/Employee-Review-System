@@ -25,7 +25,7 @@ module.exports.add_employee = (req, res) => {
         jobtitle: req.body.department,
         password:req.body.password,
         manager_email: req.body.manager_mail,
-        is_admin:true//initially employee is not admin
+        is_admin:false//initially employee is not admin
     })
     res.redirect('back')
 }
