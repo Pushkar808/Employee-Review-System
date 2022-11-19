@@ -31,3 +31,5 @@ Note: for practice below is the admin account details:<br>
   Username: admin@2.gg<br>
   Password: 123456
 </b>
+
+There is only 1 super admin in this which cannot be removed 
