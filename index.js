@@ -31,7 +31,8 @@ app.use(session({
     resave: false,
     cookie: { maxAge: (1000 * 60 * 100) },
     store: MongoStore.create({
-        mongoUrl: 'mongodb://localhost:27017/EmpReviewSystem',
+        // mongoUrl: 'mongodb://localhost:27017/EmpReviewSystem',
+        mongoUrl:"mongodb+srv://ok:orrF1ddSNHyzmVL5@atlascluster.nsa5syd.mongodb.net/?retryWrites=true&w=majority",
         autoRemove: 'disabled'
     },
         function (err) {
