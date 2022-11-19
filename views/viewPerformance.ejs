@@ -1,1 +1,36 @@
-<%= rating_mapped %>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Employee Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Department</th>
+            <th scope="col">jobtitle</th>
+            <th scope="col">Manager's Email</th>
+        </tr>
+    </thead>
+    <% for(let i=0;i<rating_mapped.length;i++) { %>
+        <tr onclick="location.href='/employee/addReviewForm/?id=<%= rating_mapped[i].id%>'">
+            <td data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+                <%= rating_mapped[i].name %>
+            </td>
+
+            <td>
+                <%= rating_mapped[i].email %>
+            </td>
+            <td>
+                <%= rating_mapped[i].empid %>
+            </td>
+            <td>
+                <%= rating_mapped[i].department %>
+            </td>
+            <td>
+                <%= rating_mapped[i].jobtitle %>
+            </td>
+            <td>
+                <%= rating_mapped[i].manager_email %>
+            </td>
+        </tr>
+
+        <% } %>
+</table>

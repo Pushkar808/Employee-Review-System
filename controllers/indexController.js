@@ -1,11 +1,13 @@
-const Employee=require('../models/employeeSchema')
-module.exports.home=(req,res)=>{
+const Employee = require('../models/employeeSchema')
+module.exports.home = (req, res) => {
     if (!req.isAuthenticated()) {//if user is already signed in the don't show login form
         return res.redirect('/login')
     }
-    res.render('index')
+
+    res.render("index");
+
 }
-module.exports.login=(req,res)=>{
+module.exports.login = (req, res) => {
     if (req.isAuthenticated()) {//if user is already signed in the don't show login form
         return res.redirect('/')
     }
@@ -26,20 +28,24 @@ module.exports.createSession = (req, res) => {
         if (data) {
             if (req.body.password != data.password)//if password mismatch
             {
-                console.log("Wrong username/password");
+                req.flash('error', 'Wrong Username/Password');
                 return res.render('login');
             }
             else
                 res.cookie('user_id', data._id);
+            req.flash('success', 'Welcome');
             res.redirect('/');
         }
     })
 }
 
 //destroying session i.e signout
-module.exports.destroySession=function(req,res,next){
-    req.logout(function(err) {
-     if (err) { return next(err); }
-     res.redirect('/');//redirecting to index.ejs
-   });
- }
+module.exports.destroySession = function (req, res, next) {
+    req.logout(function (err) {
+        if (err) { return next(err); }
+        req.flash('success', 'Logged Out Succesfully');
+        res.redirect('/login');//redirecting to index.ejs
+    });
+   
+
+}

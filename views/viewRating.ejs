@@ -1,84 +1,79 @@
 <table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th scope="col">Employee Id</th>
-            <th scope="col">Employee Name</th>
-            <th scope="col">Email</th>
-            <!-- <th scope="col">Feedback Status</th> -->
-        </tr>
-    </thead>
-    <% for(let i=0;i<data.length;i++) { %>
-        <tr>
-            <td data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
-                <%= data[i].employee.empid %>
-            </td>
-            <td data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
-                <%= data[i].employee.name %>
-            </td>
-            <td data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
-                <%= data[i].employee.email %>
-            </td>
-            <td>
-                <a href="#" class="submitRating-edit">View/Edit Given Rating</a>
-            </td>
-            <td>
-                <div class="editRatingform">
-                    <!--Emp rating edit form table-->
-                    <form action="/employee/admin/editRating/?rid=<%= data[i].rating_id.id %>" method="POST">
-                        <table>
-                            <tbody id="rating-range">
-                                <tr>
-                                    <th scope="row">Job Knowledge</th>
-                                    <td><input type="range" max="5" min="0" name="knowledge"
-                                            value="<%= data[i].rating_id.knowledge %>"><span data-toggle="tooltip"
-                                            title="1" id="rating-value">
-                                            <%= data[i].rating_id.knowledge %>
-                                        </span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Work Quality</th>
-                                    <td><input type="range" max="5" min="0" name="work_quality"
-                                            value="<%= data[i].rating_id.work_quality %>"><span data-toggle="tooltip"
-                                            title="1" id="rating-value">
-                                            <%= data[i].rating_id.work_quality %>
-                                        </span></td>
+  <thead>
+    <tr>
+      <th scope="col">Employee Id</th>
+      <th scope="col">Employee Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Rating Given By</th>
+      <!-- <th scope="col">Feedback Status</th> -->
+    </tr>
+  </thead>
+  <% for(let i=0;i<data.length;i++) { %>
+  <tr>
+    <td data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+      <%= data[i].rated_emp.empid %>
+    </td>
+    <td data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+      <%= data[i].rated_emp.name %>
+    </td>
+    <td data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+      <%= data[i].rated_emp.email %>
+    </td>
+    <td data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+      <%= data[i].employee.name %>
+    </td>
 
-                                </tr>
-                                <tr>
-                                    <th scope="row">Attendance/Puntuality</th>
-                                    <td><input type="range" max="5" min="0" name="attendance"
-                                            value="<%= data[i].rating_id.attendance %>"><span data-toggle="tooltip"
-                                            title="1" id="rating-value">
-                                            <%= data[i].rating_id.attendance %>
-                                        </span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Productivity</th>
-                                    <td><input type="range" max="5" min="0" name="productivity"
-                                            value="<%= data[i].rating_id.productivity %>"><span data-toggle="tooltip"
-                                            title="1" id="rating-value">
-                                            <%= data[i].rating_id.productivity %>
-                                        </span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Communication/Listining Skills</th>
-                                    <td><input type="range" max="5" min="0" name="listening_skills"
-                                            value="<%= data[i].rating_id.listening_skills %>"><span
-                                            data-toggle="tooltip" title="1" id="rating-value">
-                                            <%= data[i].rating_id.listening_skills %>
-                                        </span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <input type="submit">
-                    </form>
-                </div>
-            </td>
+    <td>
+      <a href="#" class="submitRating-edit">View/Edit Given Rating</a>
+    </td>
+    <td>
+      <div class="editRatingform">
+        <!--Emp rating edit form table-->
+        <form action="/employee/admin/editRating/?rid=<%= data[i].rating_id.id %>" method="POST">
+          <table>
+            <tbody id="rating-range">
+              <tr>
+                <th scope="row">Job Knowledge</th>
+                <td><input type="range" max="5" min="0" name="knowledge" value="<%= data[i].rating_id.knowledge %>"><span data-toggle="tooltip" title="1" id="rating-value">
+                    <%= data[i].rating_id.knowledge %>
+                  </span></td>
+              </tr>
+              <tr>
+                <th scope="row">Work Quality</th>
+                <td><input type="range" max="5" min="0" name="work_quality" value="<%= data[i].rating_id.work_quality %>"><span data-toggle="tooltip" title="1" id="rating-value">
+                    <%= data[i].rating_id.work_quality %>
+                  </span></td>
 
-            <td>
+              </tr>
+              <tr>
+                <th scope="row">Attendance/Puntuality</th>
+                <td><input type="range" max="5" min="0" name="attendance" value="<%= data[i].rating_id.attendance %>"><span data-toggle="tooltip" title="1" id="rating-value">
+                    <%= data[i].rating_id.attendance %>
+                  </span></td>
+              </tr>
+              <tr>
+                <th scope="row">Productivity</th>
+                <td><input type="range" max="5" min="0" name="productivity" value="<%= data[i].rating_id.productivity %>"><span data-toggle="tooltip" title="1" id="rating-value">
+                    <%= data[i].rating_id.productivity %>
+                  </span></td>
+              </tr>
+              <tr>
+                <th scope="row">Communication/Listining Skills</th>
+                <td><input type="range" max="5" min="0" name="listening_skills" value="<%= data[i].rating_id.listening_skills %>"><span data-toggle="tooltip" title="1" id="rating-value">
+                    <%= data[i].rating_id.listening_skills %>
+                  </span></td>
+              </tr>
+            </tbody>
+          </table>
+          <input type="submit">
+        </form>
+      </div>
+    </td>
 
-            </td>
-        </tr>
+    <td>
 
-        <% } %>
+    </td>
+  </tr>
+
+  <% } %>
 </table>

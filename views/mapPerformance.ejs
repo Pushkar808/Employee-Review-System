@@ -1,66 +1,105 @@
-<h1>About <%= empData.name %></h1>
+<h1>
+  About <%= empData.name %>
+</h1>
 <div class="container-fluid">
-    
+  <a href="#" id="editButton"><i class="fa-solid fa-pen-to-square"></i></a>
+  <!--Emp info edit form -->
+  <form id="empForm" action="/employee/admin/editEmp" method="POST">
     <table class="table table-striped">
-        
-        <tbody>
-            <tr>
-                <th scope="row">Employee Name: </th>
-                <td>
-                    <%= empData.name %>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">Job Title:</th>
-                <td>
-                    <%= empData.jobtitle %>
-                </td>
+      <tbody>
+        <input type="hidden" name="id" value="<%= empData.id %>">
+        <tr>
+          <th scope="row">Employee Name: </th>
+          <td>
+            <input type='text' value="<%= empData.name %>" name="name">
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Job Title:</th>
+          <td>
+            <input type='text' value="<%= empData.jobtitle %>" name="jobtitle" required>
+          </td>
 
-            </tr>
-            <tr>
-                <th scope="row">Department</th>
-                <td colspan="2">
-                    <%= empData.department %>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">Employee ID</th>
-                <td colspan="2">
-                    <%= empData.empid %>
-                </td>
-            </tr>
-        </tbody>
+        </tr>
+        <tr>
+          <th scope="row">Department</th>
+          <td colspan="2">
+            <input type='text' value="<%= empData.department %>" required name="department">
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Employee ID</th>
+          <td colspan="2">
+            <input type='number' value="<%= empData.empid %>" required name="empid">
+          </td>
+        </tr>
+      </tbody>
     </table>
+    <input type="submit" class="btn btn-secondary" value="Edit">
+  </form>
+  <div id="empTable">
+    <table class="table table-striped">
+
+      <tbody>
+        <tr>
+          <th scope="row">Employee Name: </th>
+          <td>
+            <%= empData.name %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Job Title:</th>
+          <td>
+            <%= empData.jobtitle %>
+          </td>
+
+        </tr>
+        <tr>
+          <th scope="row">Department</th>
+          <td colspan="2">
+            <%= empData.department %>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Employee ID</th>
+          <td colspan="2">
+            <%= empData.empid %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <h1>Map Feedback</h1>
 <div class="container-fluid">
-    <table class="table table-striped">
-        <thead>
-            <th scope="row">Employee Name: </th>
-            <th scope="row">Map Employees for this feedback</th>
-        </thead>
-        <form action="/employee/admin/mapEmp" method="GET">
-            <tbody>
-                <% for(data in allEmp){ %>
-                        <tr>
-                            <td>
-                                <%= allEmp[data].name %>
-                                <%= allEmp[data].id %>
-                            </td>
-                            <td>
-                                <% if(allEmp[data].rating_mapped.includes(empData.id)){ %>
-                                    <input type="checkbox" name="mappedId" value="<%= allEmp[data].id %>" disabled> Map for Feedback
-                                    <%}else{ %>
-                                <input type="checkbox" name="mappedId" value="<%= allEmp[data].id %>"> Map for Feedback
-                                    <% } %><br>
-                            </td>
-                        </tr>
-                        
-                <% } %>
-                <input type="hidden" value="<%= empData.id %>" name="id">
-            </tbody>
-            <input type="submit" class="btn btn-primary" value="Map To Employees" >
-        </form>
-    </table>
+  <table class="table table-striped">
+    <thead>
+      <th scope="row">Employee Name: </th>
+      <th scope="row">Map Employees for this feedback</th>
+    </thead>
+    <form action="/employee/admin/mapEmp" method="GET">
+      <tbody>
+        <% for(data in allEmp){ %>
+        <tr>
+          <td>
+            <%= allEmp[data].name %>
+            <%= allEmp[data].id %>
+          </td>
+          <td>
+            <% if(allEmp[data].rating_mapped.includes(empData.id)){ %>
+            <input type="checkbox" name="mappedId" value="<%= allEmp[data].id %>" disabled> Map for
+            Feedback
+            <%}else{ %>
+            <input type="checkbox" name="mappedId" value="<%= allEmp[data].id %>"> Map for
+            Feedback
+            <% } %><br>
+          </td>
+        </tr>
+        <% } %>
+        <input type="hidden" value="<%= empData.id %>" name="id">
+      </tbody>
+      <input type="submit" class="btn btn-primary" value="Map To Employees">
+    </form>
+  </table>
 
 </div>

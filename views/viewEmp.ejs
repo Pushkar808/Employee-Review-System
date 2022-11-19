@@ -2,8 +2,8 @@
     <thead>
         <tr>
             <th scope="col">Employee Id</th>
-            <th scope="col">Name</th>
             <th scope="col">Email</th>
+            <th scope="col">Name</th>
             <th scope="col">Department</th>
             <th scope="col">jobtitle</th>
             <th scope="col">Manager's Email</th>
@@ -21,9 +21,9 @@
             <td><%= Empdata[i].jobtitle %></td>
             <td><%= Empdata[i].manager_email %></td>
             <% if(!Empdata[i].is_admin){ %>
-            <td><button class="btn btn-primary">Make Admin</button ></td>
+            <td><button class="btn btn-primary" onclick="location.href='/admin/addasAdmin/?id=<%= Empdata[i].id%>'">Make Admin</button ></td>
             <% }else{ %>
-            <td><button class="btn btn-danger">Remove Admin</button ></td>
+            <td><button class="btn btn-danger" onclick="location.href='/admin/removeasAdmin/?id=<%= Empdata[i].id%>'"">Remove Admin</button ></td>
 
             <% } %>
             <td><a id="removeEmp" href="/employee/admin/map/?id=<%= Empdata[i].id %>">Edit/Map</a></td>

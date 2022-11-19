@@ -27,9 +27,9 @@ module.exports.add_employee = (req, res) => {
     res.redirect('back')
 }
 //module to delete employee
-
 module.exports.delete = (req, res) => {
     employeeSchema.deleteOne({ id: req.query.id }, (err, data) => { if (err) console.log(err) });
+    req.flash('success', 'Employee deleted!'); 
     res.redirect('back')
 }
 
@@ -45,7 +45,6 @@ module.exports.addPerformance = (req, res) => {
 //module to add performance for employee
 module.exports.addReviewForm =async (req, res) => {
     const rating_details=await ratingMapSchema.find({rated_emp:req.query.id,employee:req.user.id}).populate('rating_id')
-    console.log(rating_details);
     const empData=await employeeSchema.findById(req.query.id)
     if(rating_details.length!=0){
         return res.render('addReviewForm', {
@@ -77,23 +76,21 @@ module.exports.rating =async (req, res) => {
     //DB to know which emp has give rating to which emp and what is the rating
     await ratingMapSchema.create({
         employee:req.user.id,
-        //NOTE::: change it to the current logged in employee cookie
         rated_emp:req.query.id,
         rating_id:newRating.id,
         rating_given:true
     })
-
+    req.flash('success', 'Thanks for your feedback'); 
     res.redirect('back');
 }
 
 //to view the rating mapped by admin to the employee
-module.exports.viewRating=(req,res)=>{
+module.exports.viewRating=async (req,res)=>{
     if (!req.isAuthenticated()) {//if user is not already signed in the don't show login form
         res.redirect('/')
     }
-    // console.log(req.user.rating_mapped)
+    await req.user.populate('rating_mapped')
     res.render('viewPerformance',{
         rating_mapped:req.user.rating_mapped
     })
-    
 }

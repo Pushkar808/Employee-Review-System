@@ -12,6 +12,7 @@ module.exports.admin = (req, res) => {
 //module to render form map the employees 
 module.exports.map = async (req, res) => {
     if (!req.isAuthenticated() || !req.user.is_admin) {//if user if not admin or not signed in then unable to show this page
+        req.flash('error', 'You have no admin rights'); 
         return res.redirect('/');
     }
     const allEmp = await empSchema.find({ _id: { $ne: req.query.id } })//so that current user i.e user whose rating we are mapping to other will not be viisble
@@ -85,7 +86,7 @@ module.exports.viewRating = (req, res) => {
 module.exports.editRating = (req, res) => {
     // console.log(req.body);
     //req.body is already in the correct format so we can directly pass it to update the data
-    performanceScema.findByIdAndUpdate(req.query.rid,req.body,(err, data) => {
+    performanceScema.findByIdAndUpdate(req.query.rid, req.body, (err, data) => {
         if (err) {
             console.log("Error in fetching emp ref:adminControll.editRatingform" + err);
             return;
@@ -93,4 +94,43 @@ module.exports.editRating = (req, res) => {
         res.redirect('back')
     });
 
+}
+
+
+//to add user as admin
+module.exports.addasAdmin = (req, res) => {
+    req.flash('message', 'Welcome to Blog');
+    if (!req.isAuthenticated() || !req.user.is_admin) {//if user if not admin or not signed in then unable to show this page
+        return res.redirect('/');
+    }
+    empSchema.findByIdAndUpdate(req.query.id, { is_admin: true }, (err, data) => {
+        if (err) {
+            console.log("Error in making admin ref:adminControll.addasAdmin" + err);
+            return;
+        }
+    })
+    req.flash('success', 'User added as admin'); 
+    res.redirect('back');
+}
+
+
+
+//to remove user as admin
+module.exports.removeasAdmin = (req, res) => {
+    if (!req.isAuthenticated() || !req.user.is_admin || req.query.id=="636d24bb30aec2a4b1888e10"){//if user if not admin or not signed in then unable to show this page
+        // ObjectId("636d24bb30aec2a4b1888e10") is the super admin id
+        // so that no one can remove super admin
+        if(req.query.id=="636d24bb30aec2a4b1888e10")
+        req.flash('error', 'Cannot remover super admin'); 
+
+        return res.redirect('/');
+    }
+    empSchema.findByIdAndUpdate(req.query.id, { is_admin: false }, (err, data) => {
+        if (err) {
+            console.log("Error in making admin ref:adminControll.addasAdmin" + err);
+            return;
+        }
+    })
+    req.flash('success', 'User removed as admin'); 
+    res.redirect('back');
 }
