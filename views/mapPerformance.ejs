@@ -74,6 +74,7 @@
 <div class="container-fluid">
   <table class="table table-striped">
     <thead>
+      <th scope="row">Employee Id: </th>
       <th scope="row">Employee Name: </th>
       <th scope="row">Map Employees for this feedback</th>
     </thead>
@@ -82,8 +83,10 @@
         <% for(data in allEmp){ %>
         <tr>
           <td>
+            <%= allEmp[data].empid %>
+          </td>
+          <td>
             <%= allEmp[data].name %>
-            <%= allEmp[data].id %>
           </td>
           <td>
             <% if(allEmp[data].rating_mapped.includes(empData.id)){ %>
