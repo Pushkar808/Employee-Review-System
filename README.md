@@ -25,3 +25,9 @@ Has 1 login for admin and employee
   3. After cloning open the folder on the VSCode and open its terminal
   4. Input the commands to install all the required dependencies <code>npm install</code>.
   5. Run the website from localhost:8000.
+
+<b>
+Note: for practice below is the super admin account details:<br>
+  Username: admin@gg.cc<br>
+  Password: 1234
+</b>
