@@ -117,10 +117,10 @@ module.exports.addasAdmin = (req, res) => {
 
 //to remove user as admin
 module.exports.removeasAdmin = (req, res) => {
-    if (!req.isAuthenticated() || !req.user.is_admin || req.query.id=="63790f58cf08e635a7436b97"){//if user if not admin or not signed in then unable to show this page
+    if (!req.isAuthenticated() || !req.user.is_admin || req.query.id=="637922cec2d687a1d1fc7cab"){//if user if not admin or not signed in then unable to show this page
         // ObjectId("63790f58cf08e635a7436b97") is the super admin id
         // so that no one can remove super admin
-        if(req.query.id=="63790f58cf08e635a7436b97")
+        if(req.query.id=="637922cec2d687a1d1fc7cab")
         req.flash('error', 'Cannot remover super admin'); 
 
         return res.redirect('/');
