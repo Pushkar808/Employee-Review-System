@@ -28,8 +28,8 @@ Has 1 login for admin and employee
 
 <b>
 Note: for practice below is the admin account details:<br>
-  Username: admin@2.gg<br>
-  Password: 123456
+  Username: empmail@gmail.com<br>
+  Password: 123
 </b>
 
 There is only 1 super admin in this which cannot be removed 
